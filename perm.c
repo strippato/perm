@@ -1,6 +1,8 @@
-// 
+//  
 //	strippato@gmail.com
-//	
+//
+//	gcc -O2 -Wall perm.c -o perm 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -34,7 +36,7 @@ perm (char *data, char *base)
 			tmpstr [i] = firstchr;
 
 			// build nextbase
-			char *nextbase = malloc (lenBase + 1);
+			char *nextbase = malloc (lenBase + 1 + 1);
 			strcpy (nextbase, base);
 			nextbase [lenBase] = tmpstr [0];
 			nextbase [lenBase + 1] = '\0';
@@ -47,6 +49,7 @@ perm (char *data, char *base)
 		}
 
 		return nperm;
+
 	}
 
 }
@@ -54,9 +57,8 @@ perm (char *data, char *base)
 int
 main (int argc, char *argv[])
 {
-	unsigned long int np = perm ("ABCD", "");
-	
-	printf ("Total: %li\n", np);
+	if (argc > 1) printf ("Total: %li\n", perm (argv[1], ""));
 
 	return EXIT_SUCCESS;
 }
+
